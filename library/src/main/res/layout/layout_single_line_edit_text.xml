@@ -2,42 +2,44 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/singleLineRootLayout"
     android:layout_width="match_parent"
-    android:background="#FFFFFFFF"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/singleLineClearImageView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/singleLineEndContainer"
+        android:layout_width="70dp"
+        android:minHeight="@dimen/single_line_edit_text_min_height"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginEnd="5dp"
-        android:layout_marginRight="5dp"
-        android:padding="5dp"
-        android:src="@mipmap/icon_close"
-        android:visibility="gone" />
+        android:layout_marginRight="5dp">
 
-    <ImageView
-        android:id="@+id/singleLineEyeImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_toLeftOf="@id/singleLineClearImageView"
-        android:layout_toStartOf="@id/singleLineClearImageView"
-        android:padding="5dp"
-        android:src="@mipmap/eye"
-        android:visibility="gone" />
+        <ImageView
+            android:id="@+id/singleLineEyeImageView"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:scaleType="center"
+            android:src="@mipmap/eye"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/singleLineClearImageView"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:scaleType="center"
+            android:src="@mipmap/icon_close"
+            android:visibility="visible" />
+
+    </LinearLayout>
 
     <EditText
         android:id="@+id/singleLineEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toLeftOf="@id/singleLineEyeImageView"
-        android:layout_toStartOf="@id/singleLineEyeImageView"
+        android:layout_toLeftOf="@id/singleLineEndContainer"
+        android:layout_toStartOf="@id/singleLineEndContainer"
         android:background="@android:color/transparent"
         android:inputType="text"
         android:minHeight="@dimen/single_line_edit_text_min_height"
@@ -46,6 +48,7 @@
         android:paddingRight="10dp"
         android:paddingStart="10dp"
         android:singleLine="true"
+        android:text="哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
         android:textColor="#FF404040"
         android:textSize="15sp" />
 
