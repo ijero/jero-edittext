@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF0F0F0"
+    tools:context="cn.ijero.jeroedittext.MainActivity">
+
+    <cn.ijero.edittext.JeroSingleLineEditText
+        android:id="@+id/jeroSingleLineEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:hint="请输入文本"
+        android:text="112233"
+        android:textColor="#FF0000"
+        android:textColorHint="#FF888888"
+        android:textSize="15dp"
+        app:inputType="number"
+        app:showClear="true"
+        app:showContent="false"
+        app:showEye="true" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/jeroSingleLineEditText"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="InputType：" />
+
+        <RadioButton
+            android:id="@+id/numberRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="number" />
+
+        <RadioButton
+            android:id="@+id/textRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="text" />
+
+    </RadioGroup>
+
+</RelativeLayout>
