@@ -1,0 +1,52 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.2.0'
+    ext.anko_version = '0.10.3'
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.novoda:bintray-release:0.7.0'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+ext {
+    bToolsVersion = "26.0.3"
+    cSdkVersion = 26
+    mSdkVersion = 16
+    tSdkVersion = 26
+    versionCode = 1
+    versionName = "0.1.0"
+
+    upload = [
+            repoName  : 'android',
+            userOrg   : 'jero',
+            groupId   : 'cn.ijero.edittext',
+            artifactId: 'jero-edittext',
+            desc      : "Release $versionName Done.",
+            website   : 'https://github.com/ijero/jero-edittext'
+    ]
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+//字体问题
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
