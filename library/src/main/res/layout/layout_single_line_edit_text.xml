@@ -6,30 +6,30 @@
 
     <LinearLayout
         android:id="@+id/singleLineEndContainer"
-        android:layout_width="70dp"
-        android:minHeight="@dimen/single_line_edit_text_min_height"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginEnd="5dp"
-        android:layout_marginRight="5dp">
+        android:layout_marginRight="5dp"
+        android:minHeight="30dp">
 
         <ImageView
             android:id="@+id/singleLineEyeImageView"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:scaleType="center"
             android:src="@mipmap/eye"
-            android:visibility="visible" />
+            android:visibility="gone" />
 
         <ImageView
             android:id="@+id/singleLineClearImageView"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:scaleType="center"
             android:src="@mipmap/icon_close"
-            android:visibility="visible" />
+            android:visibility="gone" />
 
     </LinearLayout>
 

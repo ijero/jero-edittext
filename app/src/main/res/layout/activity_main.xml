@@ -12,19 +12,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:hint="请输入文本"
-        android:text="112233"
-        android:textColor="#FF0000"
         android:background="#FFF"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
+        android:hint="请输入文本"
+        android:text="111122"
+        android:textColor="#FF0000"
         android:textColorHint="#FF888888"
         android:textSize="15dp"
-        app:inputType="number"
+        app:eyeCloseImage="@mipmap/eye_blocked"
+        app:eyeImage="@mipmap/eye"
+        app:inputType="text"
         app:showClear="true"
-        app:showContent="false"
-        app:showEye="true"
-        android:paddingLeft="10dp" />
+        app:showContent="true"
+        app:showEye="true" />
 
     <RadioGroup
         android:layout_width="match_parent"
@@ -41,13 +40,13 @@
             android:id="@+id/numberRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true"
             android:text="number" />
 
         <RadioButton
             android:id="@+id/textRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="text" />
 
     </RadioGroup>

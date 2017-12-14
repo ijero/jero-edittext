@@ -18,10 +18,19 @@ class JeroSingleLineEditText
 constructor(ctx: Context, attrs: AttributeSet? = null)
     : RelativeLayout(ctx, attrs), AnkoLogger {
 
+    companion object {
+        const val TYPE_TEXT = 0
+        const val TYPE_NUMBER = 1
+        const val NO_ID = 0
+    }
+
     private val rootLayout = LayoutInflater.from(ctx)
             .inflate(R.layout.layout_single_line_edit_text, this, true).apply {
         setListeners()
     }.singleLineRootLayout
+
+    private var eyeResourceId: Int = NO_ID
+    private var eyeCloseResourceId: Int = NO_ID
 
     private fun setListeners() {
         singleLineClearImageView.setOnClickListener {
@@ -112,7 +121,7 @@ constructor(ctx: Context, attrs: AttributeSet? = null)
         set(value) {
             if (field != value) {
                 field = value
-                eyeResourceId = 0
+                eyeResourceId = NO_ID
                 singleLineEyeImageView.setImageDrawable(field)
             }
         }
@@ -121,7 +130,7 @@ constructor(ctx: Context, attrs: AttributeSet? = null)
         set(value) {
             if (field != value) {
                 field = value
-                eyeCloseResourceId = 0
+                eyeCloseResourceId = NO_ID
                 singleLineEyeImageView.setImageDrawable(field)
             }
         }
@@ -135,7 +144,7 @@ constructor(ctx: Context, attrs: AttributeSet? = null)
             }
         }
 
-    var showContent = false
+    var showContent = true
         set(value) {
             if (field != value) {
                 field = value
@@ -158,22 +167,6 @@ constructor(ctx: Context, attrs: AttributeSet? = null)
     private fun hideContent() {
         when (inputType) {
             TYPE_TEXT -> {
-                singleLineEditText.inputType = EditorInfo.TYPE_CLASS_TEXT
-            }
-            else -> {
-                singleLineEditText.inputType = EditorInfo.TYPE_CLASS_NUMBER
-            }
-        }
-        when {
-            eyeCloseImage != null -> singleLineEyeImageView.setImageDrawable(eyeCloseImage)
-            eyeCloseResourceId != NO_ID -> singleLineEyeImageView.setImageResource(eyeCloseResourceId)
-            else -> singleLineEyeImageView.setImageResource(R.mipmap.eye_blocked)
-        }
-    }
-
-    private fun showContent() {
-        when (inputType) {
-            TYPE_TEXT -> {
                 singleLineEditText.inputType = EditorInfo.TYPE_CLASS_TEXT or EditorInfo.TYPE_TEXT_VARIATION_PASSWORD
             }
             else -> {
@@ -187,15 +180,21 @@ constructor(ctx: Context, attrs: AttributeSet? = null)
         }
     }
 
-    private var eyeResourceId: Int = NO_ID
-    private var eyeCloseResourceId: Int = NO_ID
-
-    companion object {
-        const val TYPE_TEXT = 0
-        const val TYPE_NUMBER = 1
-        const val NO_ID = 0
+    private fun showContent() {
+        when (inputType) {
+            TYPE_TEXT -> {
+                singleLineEditText.inputType = EditorInfo.TYPE_CLASS_TEXT or EditorInfo.TYPE_TEXT_VARIATION_NORMAL
+            }
+            else -> {
+                singleLineEditText.inputType = EditorInfo.TYPE_CLASS_NUMBER or EditorInfo.TYPE_NUMBER_VARIATION_NORMAL
+            }
+        }
+        when {
+            eyeCloseImage != null -> singleLineEyeImageView.setImageDrawable(eyeCloseImage)
+            eyeCloseResourceId != NO_ID -> singleLineEyeImageView.setImageResource(eyeCloseResourceId)
+            else -> singleLineEyeImageView.setImageResource(R.mipmap.eye_blocked)
+        }
     }
-
     init {
         applyStyle(attrs)
     }
@@ -210,11 +209,11 @@ constructor(ctx: Context, attrs: AttributeSet? = null)
         textSize = ta.getDimension(R.styleable.JeroSingleLineEditText_android_textSize, textSize)
         showClear = ta.getBoolean(R.styleable.JeroSingleLineEditText_showClear, showClear)
         showEye = ta.getBoolean(R.styleable.JeroSingleLineEditText_showEye, showEye)
-        showContent = ta.getBoolean(R.styleable.JeroSingleLineEditText_showContent, showContent)
         clearImage = ta.getDrawable(R.styleable.JeroSingleLineEditText_clearImage)
         eyeImage = ta.getDrawable(R.styleable.JeroSingleLineEditText_eyeImage)
         eyeCloseImage = ta.getDrawable(R.styleable.JeroSingleLineEditText_eyeCloseImage)
         inputType = ta.getInt(R.styleable.JeroSingleLineEditText_inputType, inputType)
+        showContent = ta.getBoolean(R.styleable.JeroSingleLineEditText_showContent, showContent)
 
         ta.recycle()
     }
