@@ -15,12 +15,16 @@
         android:hint="请输入文本"
         android:text="112233"
         android:textColor="#FF0000"
+        android:background="#FFF"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         android:textColorHint="#FF888888"
         android:textSize="15dp"
         app:inputType="number"
         app:showClear="true"
         app:showContent="false"
-        app:showEye="true" />
+        app:showEye="true"
+        android:paddingLeft="10dp" />
 
     <RadioGroup
         android:layout_width="match_parent"
