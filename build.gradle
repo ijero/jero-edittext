@@ -21,8 +21,8 @@ ext {
     cSdkVersion = 26
     mSdkVersion = 16
     tSdkVersion = 26
-    versionCode = 2
-    versionName = "0.1.1"
+    versionCode = 3
+    versionName = "0.1.2"
 
     upload = [
             repoName  : 'android',
