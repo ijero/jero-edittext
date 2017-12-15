@@ -14,7 +14,6 @@
         android:layout_marginTop="40dp"
         android:background="#FFF"
         android:hint="请输入文本"
-        android:text="111122"
         android:textColor="#FF0000"
         android:textColorHint="#FF888888"
         android:textSize="15dp"
