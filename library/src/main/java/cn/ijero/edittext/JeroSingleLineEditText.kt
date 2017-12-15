@@ -3,6 +3,8 @@ package cn.ijero.edittext
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.inputmethod.EditorInfo
@@ -16,7 +18,18 @@ import org.jetbrains.anko.AnkoLogger
 class JeroSingleLineEditText
 @JvmOverloads
 constructor(ctx: Context, attrs: AttributeSet? = null)
-    : RelativeLayout(ctx, attrs), AnkoLogger {
+    : RelativeLayout(ctx, attrs), AnkoLogger, TextWatcher {
+    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+    }
+
+    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+    }
+
+    override fun afterTextChanged(s: Editable?) {
+        if (showClear) {
+            autoShowClear = !s.isNullOrEmpty()
+        }
+    }
 
     companion object {
         const val TYPE_TEXT = 0
@@ -41,6 +54,7 @@ constructor(ctx: Context, attrs: AttributeSet? = null)
                 showContent = !showContent
             }
         }
+        singleLineEditText.addTextChangedListener(this)
     }
 
     private fun clearContent() {
@@ -86,11 +100,23 @@ constructor(ctx: Context, attrs: AttributeSet? = null)
                 singleLineEditText.paint.textSize = field
             }
         }
-    var showClear = false
+    private var autoShowClear = false
         set(value) {
             if (field != value) {
                 field = value
                 singleLineClearImageView.visibility = if (field) {
+                    VISIBLE
+                } else {
+                    GONE
+                }
+            }
+        }
+
+    var showClear = false
+        set(value) {
+            if (field != value) {
+                field = value
+                singleLineClearImageView.visibility = if (field && !singleLineEditText.text.isNullOrEmpty()) {
                     VISIBLE
                 } else {
                     GONE
@@ -195,6 +221,7 @@ constructor(ctx: Context, attrs: AttributeSet? = null)
             else -> singleLineEyeImageView.setImageResource(R.mipmap.eye_blocked)
         }
     }
+
     init {
         applyStyle(attrs)
     }
