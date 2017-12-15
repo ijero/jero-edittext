@@ -65,18 +65,18 @@ constructor(ctx: Context, attrs: AttributeSet? = null)
         set(value) {
             if (field != value) {
                 field = value
+                singleLineEditText.setText(field)
+                singleLineEditText.setSelection(field?.length ?: 0)
             }
-            singleLineEditText.setText(field)
-            singleLineEditText.setSelection(text?.length ?: 0)
         }
-        get() = singleLineEditText.text.toString()
+        get() = singleLineEditText.text
 
     var hint: CharSequence? = null
         set(value) {
             if (field != value) {
                 field = value
+                singleLineEditText.hint = field
             }
-            singleLineEditText.hint = field
         }
 
     var textColorHint: ColorStateList? = null
@@ -256,5 +256,12 @@ constructor(ctx: Context, attrs: AttributeSet? = null)
             singleLineEyeImageView.setImageResource(eyeCloseResourceId)
         }
     }
+
+
+    fun editText() = rootLayout.singleLineEditText
+
+    fun eyeImageView() = rootLayout.singleLineEyeImageView
+
+    fun clearImageView() = rootLayout.singleLineClearImageView
 
 }
